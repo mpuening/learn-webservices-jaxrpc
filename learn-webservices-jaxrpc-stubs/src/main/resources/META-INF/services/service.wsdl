@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:aircraft="https://learnjaxrpc.github.io/learn/webservice/rpc/aircraft/1.0.0"
+	xmlns:msg="https://learnjaxrpc.github.io/learn/webservice/rpc/msg/1.0.0"
+	xmlns:svc="https://learnjaxrpc.github.io/learn/webservice/rpc"
+	targetNamespace="https://learnjaxrpc.github.io/learn/webservice/rpc">
+
+	<wsdl:types>
+		<xsd:schema elementFormDefault="qualified">
+			<xsd:import
+				namespace="https://learnjaxrpc.github.io/learn/webservice/rpc/msg/1.0.0"
+				schemaLocation="messages.xsd" />
+		</xsd:schema>
+	</wsdl:types>
+
+	<wsdl:message name="PingRequest">
+		<wsdl:part name="PingRequest" type="xsd:string" />
+	</wsdl:message>
+	
+	<wsdl:message name="PingResponse">
+		<wsdl:part name="PingResponse" type="xsd:string" />
+	</wsdl:message>
+	
+	<wsdl:message name="GetAircraftRequest">
+		<wsdl:part name="GetAircraftType" type="msg:GetAircraftType" />
+	</wsdl:message>
+
+	<wsdl:message name="ShowAircraftResponse">
+		<wsdl:part name="ShowAircraftType" type="msg:ShowAircraftType" />
+	</wsdl:message>
+
+	<wsdl:message name="UpdateAircraftRequest">
+		<wsdl:part name="UpdateAircraftType" type="msg:UpdateAircraftType" />
+	</wsdl:message>
+
+	<wsdl:message name="AcknowledgeAircraftResponse">
+		<wsdl:part name="AcknowledgeAircraftType" type="msg:AcknowledgeAircraftType" />
+	</wsdl:message>
+
+	<wsdl:portType name="AircraftInterface">
+		<wsdl:operation name="Ping">
+			<wsdl:input message="svc:PingRequest" />
+			<wsdl:output message="svc:PingResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="GetAircraft">
+			<wsdl:input message="svc:GetAircraftRequest" />
+			<wsdl:output message="svc:ShowAircraftResponse" />
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAircraft">
+			<wsdl:input message="svc:UpdateAircraftRequest" />
+			<wsdl:output message="svc:AcknowledgeAircraftResponse" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+	<wsdl:binding name="AircraftInterfaceBinding" type="svc:AircraftInterface">
+		<soap:binding style="rpc"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="Ping">
+			<soap:operation soapAction="Ping" />
+			<wsdl:input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="encoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="GetAircraft">
+			<soap:operation soapAction="GetAircraft" />
+			<wsdl:input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="encoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAircraft">
+			<soap:operation soapAction="UpdateAircraft" />
+			<wsdl:input>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="encoded" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+					use="encoded" />
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+
+	<wsdl:service name="AircraftService">
+		<wsdl:port binding="svc:AircraftInterfaceBinding" name="AircraftInterfaceBinding">
+			<soap:address location="http://localhost:8080/ws/aircraft" />
+		</wsdl:port>
+	</wsdl:service>
+</wsdl:definitions>

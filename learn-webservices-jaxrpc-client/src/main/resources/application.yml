@@ -1,0 +1,22 @@
+---
+spring:
+  profiles:
+    active: local
+
+logging:
+  level:
+    io.github.learnjaxrpc.config.SOAPLogHandler: DEBUG
+
+ws:
+  endpoint: http://localhost:8080/ws/AircraftService
+  username: service
+  password: secretpassword
+
+---
+spring:
+  profiles: local
+
+---
+spring:
+  profiles: unittest
+

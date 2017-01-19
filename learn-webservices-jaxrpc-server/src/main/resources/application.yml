@@ -1,0 +1,27 @@
+---
+spring:
+  profiles:
+    active: local
+
+logging:
+  level:
+    io.github.learnjaxrpc.config: DEBUG
+
+security:
+  basic:
+    enabled: true
+  user:
+    name: service
+    password: secretpassword   
+
+---
+spring:
+  profiles: local
+
+---
+spring:
+  profiles: unittest
+  
+security:
+  basic:
+    enabled: false

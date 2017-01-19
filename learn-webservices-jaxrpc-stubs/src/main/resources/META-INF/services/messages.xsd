@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	xmlns:aircraft="https://learnjaxrpc.github.io/learn/webservice/rpc/aircraft/1.0.0"
+	xmlns:msg="https://learnjaxrpc.github.io/learn/webservice/rpc/msg/1.0.0"
+	targetNamespace="https://learnjaxrpc.github.io/learn/webservice/rpc/msg/1.0.0"
+	elementFormDefault="qualified" attributeFormDefault="unqualified"
+	version="1.0.0">
+
+	<xsd:import
+		namespace="https://learnjaxrpc.github.io/learn/webservice/rpc/aircraft/1.0.0"
+		schemaLocation="aircraft.xsd" />
+
+	<xsd:element name="GetAircraft" type="msg:GetAircraftType" />
+	<xsd:element name="ShowAircraft" type="msg:ShowAircraftType" />
+
+	<xsd:element name="UpdateAircraft" type="msg:UpdateAircraftType" />
+	<xsd:element name="AcknowledgeAircraft" type="msg:AcknowledgeAircraftType" />
+
+	<xsd:complexType name="GetAircraftType">
+		<xsd:sequence>
+			<xsd:element name="designation" type="xsd:string"
+				minOccurs="0" />
+			<xsd:element name="name" type="xsd:string" minOccurs="0" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="ShowAircraftType">
+		<xsd:sequence>
+			<xsd:element name="aircrafts" type="aircraft:AircraftType" minOccurs="0"  maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="UpdateAircraftType">
+		<xsd:sequence>
+			<xsd:element name="aircraft" type="aircraft:AircraftType" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="AcknowledgeAircraftType">
+		<xsd:sequence>
+			<xsd:element name="status" type="xsd:string" minOccurs="1" maxOccurs="1" />
+			<xsd:element name="code" type="xsd:int" minOccurs="1" maxOccurs="1" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

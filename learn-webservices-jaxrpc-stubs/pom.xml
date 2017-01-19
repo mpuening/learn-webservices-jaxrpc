@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>learn-webservices-jaxrpc-stubs</artifactId>
+	<packaging>jar</packaging>
+
+	<name>learn-webservices-jaxrpc-stubs</name>
+	<description>Learn how to integrate with JAX-RPC Based Web Services - Stubs</description>
+
+	<parent>
+		<groupId>io.github.learnjaxrpc</groupId>
+		<artifactId>learn-webservices-jaxrpc</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>${axis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis-jaxrpc</artifactId>
+			<version>${axis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis-saaj</artifactId>
+			<version>${axis.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>commons-discovery</groupId>
+			<artifactId>commons-discovery</artifactId>
+			<version>0.5</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>commons-logging</artifactId>
+					<groupId>commons-logging</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>axistools-maven-plugin</artifactId>
+				<version>${axis.version}</version>
+				<configuration>
+					<sourceDirectory>${basedir}/src/main/resources/META-INF/services</sourceDirectory>
+					<wsdlFiles>
+						<wsdlFile>service.wsdl</wsdlFile>
+					</wsdlFiles>
+					<mappings>
+						<mapping>
+							<namespace>https://learnjaxrpc.github.io/learn/webservice/rpc/aircraft/1.0.0</namespace>
+							<targetPackage>io.github.learnjaxrpc.ws.schemas</targetPackage>
+						</mapping>
+						<mapping>
+							<namespace>https://learnjaxrpc.github.io/learn/webservice/rpc/msg/1.0.0</namespace>
+							<targetPackage>io.github.learnjaxrpc.ws.messages</targetPackage>
+						</mapping>
+						<mapping>
+							<namespace>https://learnjaxrpc.github.io/learn/webservice/rpc</namespace>
+							<targetPackage>io.github.learnjaxrpc.ws</targetPackage>
+						</mapping>
+					</mappings>					 
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>wsdl2java</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+
+</project>
