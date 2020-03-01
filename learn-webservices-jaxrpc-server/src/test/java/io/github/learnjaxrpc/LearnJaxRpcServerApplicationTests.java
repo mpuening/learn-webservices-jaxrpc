@@ -12,14 +12,13 @@ import java.util.Date;
 
 import javax.xml.rpc.ServiceException;
 
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.context.embedded.LocalServerPort;
+import org.apache.axis.client.Stub;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import io.github.learnjaxrpc.ws.AircraftInterface;
 import io.github.learnjaxrpc.ws.AircraftServiceLocator;
@@ -31,7 +30,6 @@ import io.github.learnjaxrpc.ws.schemas.AircraftType;
 import io.github.learnjaxrpc.ws.schemas.ManufacturerType;
 
 @ActiveProfiles("unittest")
-@RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class LearnJaxRpcServerApplicationTests {
 
@@ -40,10 +38,14 @@ public class LearnJaxRpcServerApplicationTests {
 
 	private AircraftInterface aircraftInterface;
 
-	@Before
+	@BeforeEach
 	public void setup() throws MalformedURLException, ServiceException {
 		String endpoint = String.format("http://localhost:%d/ws/AircraftService", testServerPort);
 		this.aircraftInterface = new AircraftServiceLocator().getAircraftInterfaceBinding(new java.net.URL(endpoint));
+
+		// Basic HTTP Authentication, see SecurityConfiguration file for credentials
+		((Stub) aircraftInterface).setUsername("service");
+		((Stub) aircraftInterface).setPassword("secretpassword");
 	}
 
 	@Test
