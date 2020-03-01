@@ -84,3 +84,11 @@ The server output should also display the REQUEST and RESPONSE messages. Certain
 Future Work
 -----------
 I want to add an example of an attachment.
+
+Attribution
+-----------
+The `learn-webservices-jaxrpc-server` project contains a patch to the following code:
+
+http://svn.apache.org/viewvc/axis/axis1/java/tags/1.4/src/org/apache/axis/utils/bytecode/ParamNameExtractor.java?revision=1225645&view=markup
+
+This is done to work around a Java 11 compatibility issue.
