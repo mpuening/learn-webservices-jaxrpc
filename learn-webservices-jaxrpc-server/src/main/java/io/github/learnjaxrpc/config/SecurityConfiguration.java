@@ -12,28 +12,34 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SecurityConfiguration  {
 
-	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication()
-			.withUser("service")
-				.password(passwordEncoder().encode("secretpassword"))
-				.authorities("ROLE_USER");
-	}
+	@Bean
+	public WebSecurityConfigurerAdapter webSecurityConfigurer() {
+		return new WebSecurityConfigurerAdapter() {
+			@Autowired
+			public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+				auth.inMemoryAuthentication()
+					.withUser("service")
+						.password(passwordEncoder().encode("secretpassword"))
+						.authorities("ROLE_USER");
+			}
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
-			.anyRequest().authenticated()
-			.and()
-			.httpBasic()
-			.and()
-			.csrf().disable();
+			@Override
+			protected void configure(HttpSecurity http) throws Exception {
+				http.authorizeRequests()
+					.anyRequest().authenticated()
+					.and()
+					.httpBasic()
+					.and()
+					.csrf().disable();
+			}
+		};
 	}
 
 	@Bean
 	public PasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
 	}
+
 }

@@ -1,6 +1,8 @@
 Learn RPC-Based SOAP Web Services (JAX-RPC)
 ===========================================
 
+[![Continuous Integration](https://github.com/mpuening/learn-webservices-jaxrpc/actions/workflows/ci.yml/badge.svg)](https://github.com/mpuening/learn-webservices-jaxrpc/actions/workflows/ci.yml)
+
 This project contains example code to demonstrate proficiency with RPC based, aka JAX-RPC, SOAP web services.
 
 Obviously, building JAX-RPC web services today is definitely not something you want to do. However, it isn't
