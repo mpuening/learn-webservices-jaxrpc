@@ -60,6 +60,12 @@ Client Module
 The client and stubs module is really what you need for integration. The client module shows how to configure a client
 stub to invoke the service on an arbitrary URL with credentials versus what the you see in the WSDL file.
 
+Jakarta EE 9 Support
+--------------------
+With the release of Jakarta EE 9, Axis, as is, no longer works on the modern app servers. However, the
+Eclipse Transformer can breathe new life into old frameworks. The `axis-jakarta` and `jakarta-xml-rpc-api`
+projects produce transformed JAR files that work against the new Jakarta namespace.
+
 Building and Running the Application
 ------------------------------------
 Simply run "mvn clean package" (or install) to build the applications. There is a Spring Boot App for both the

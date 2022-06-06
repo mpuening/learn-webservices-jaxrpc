@@ -8,7 +8,6 @@ import javax.xml.rpc.handler.GenericHandler;
 import javax.xml.rpc.handler.HandlerInfo;
 import javax.xml.rpc.handler.MessageContext;
 import javax.xml.rpc.handler.soap.SOAPMessageContext;
-import javax.xml.soap.SOAPMessage;
 import javax.xml.transform.Source;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -17,6 +16,8 @@ import javax.xml.transform.stream.StreamResult;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import jakarta.xml.soap.SOAPMessage;
 
 public class SOAPLogHandler extends GenericHandler {
 

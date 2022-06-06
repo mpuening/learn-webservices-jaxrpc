@@ -12,7 +12,7 @@
 	<parent>
 		<groupId>io.github.learnjaxrpc</groupId>
 		<artifactId>learn-webservices-jaxrpc</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>jakarta-xml-rpc-api</artifactId>
+	<packaging>jar</packaging>
+
+	<name>jakarta-xml-rpc-api</name>
+	<description>Axis Jakarta Support - XML RPC API</description>
+
+	<parent>
+		<groupId>io.github.learnjaxrpc</groupId>
+		<artifactId>learn-webservices-jaxrpc</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+
+	<properties>
+		<rpc-api.version>1.1.2</rpc-api.version>
+		<eclipse.transformer.version>0.2.0</eclipse.transformer.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>javax.xml.rpc</groupId>
+			<artifactId>javax.xml.rpc-api</artifactId>
+			<version>${rpc-api.version}</version>
+			<!-- Use classified version instead -->
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unzip-artifacts</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<mkdir dir="${project.build.directory}/classes" />
+								<unzip dest="${project.build.directory}/classes">
+									<fileset dir="${user.home}/.m2/repository">
+										<include
+											name="javax/xml/rpc/javax.xml.rpc-api/${rpc-api.version}/javax.xml.rpc-api-${rpc-api.version}.jar" />
+									</fileset>
+								</unzip>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.transformer</groupId>
+				<artifactId>org.eclipse.transformer.maven</artifactId>
+				<version>${eclipse.transformer.version}</version>
+				<configuration>
+					<classifier>jakartaee</classifier>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>

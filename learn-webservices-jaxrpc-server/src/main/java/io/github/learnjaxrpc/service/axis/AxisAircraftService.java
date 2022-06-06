@@ -2,7 +2,7 @@ package io.github.learnjaxrpc.service.axis;
 
 import java.rmi.RemoteException;
 
-import javax.servlet.ServletContext;
+import jakarta.servlet.ServletContext;
 import javax.xml.rpc.ServiceException;
 import javax.xml.rpc.server.ServiceLifecycle;
 import javax.xml.rpc.server.ServletEndpointContext;

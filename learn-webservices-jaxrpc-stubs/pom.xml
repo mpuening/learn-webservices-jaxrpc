@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
@@ -12,29 +13,30 @@
 	<parent>
 		<groupId>io.github.learnjaxrpc</groupId>
 		<artifactId>learn-webservices-jaxrpc</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>0.0.2-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>javax.xml.rpc</groupId>
-			<artifactId>javax.xml.rpc-api</artifactId>
-			<version>1.1.2</version>
+			<groupId>io.github.learnjaxrpc</groupId>
+			<artifactId>jakarta-xml-rpc-api</artifactId>
+			<version>${project.version}</version>
+			<classifier>jakartaee</classifier>
 		</dependency>
 		<dependency>
-			<groupId>javax.xml.soap</groupId>
-			<artifactId>javax.xml.soap-api</artifactId>
-			<version>1.4.0</version>
+			<groupId>jakarta.xml.soap</groupId>
+			<artifactId>jakarta.xml.soap-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>wsdl4j</groupId>
 			<artifactId>wsdl4j</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.apache.axis</groupId>
-			<artifactId>axis</artifactId>
-			<version>${axis.version}</version>
+			<groupId>io.github.learnjaxrpc</groupId>
+			<artifactId>axis-jakarta</artifactId>
+			<version>${project.version}</version>
+			<classifier>jakartaee</classifier>
 		</dependency>
 		<dependency>
 			<groupId>commons-discovery</groupId>
@@ -73,7 +75,7 @@
 							<namespace>https://learnjaxrpc.github.io/learn/webservice/rpc</namespace>
 							<targetPackage>io.github.learnjaxrpc.ws</targetPackage>
 						</mapping>
-					</mappings>					 
+					</mappings>
 				</configuration>
 				<executions>
 					<execution>

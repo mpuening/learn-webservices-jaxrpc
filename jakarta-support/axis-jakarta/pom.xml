@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>axis-jakarta</artifactId>
+	<packaging>jar</packaging>
+
+	<name>axis-jakarta</name>
+	<description>Axis Jakarta Support - axis-jakarta</description>
+
+	<parent>
+		<groupId>io.github.learnjaxrpc</groupId>
+		<artifactId>learn-webservices-jaxrpc</artifactId>
+		<version>0.0.2-SNAPSHOT</version>
+		<relativePath>../../pom.xml</relativePath>
+	</parent>
+
+	<properties>
+		<eclipse.transformer.version>0.2.0</eclipse.transformer.version>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.axis</groupId>
+			<artifactId>axis</artifactId>
+			<version>${axis.version}</version>
+			<!-- Use classified version instead -->
+			<scope>provided</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>unzip-artifacts</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<mkdir dir="${project.build.directory}/classes" />
+								<unzip dest="${project.build.directory}/classes">
+									<fileset dir="${user.home}/.m2/repository">
+										<include
+											name="org/apache/axis/axis/${axis.version}/axis-${axis.version}.jar" />
+									</fileset>
+								</unzip>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.transformer</groupId>
+				<artifactId>org.eclipse.transformer.maven</artifactId>
+				<version>${eclipse.transformer.version}</version>
+				<configuration>
+					<classifier>jakartaee</classifier>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
