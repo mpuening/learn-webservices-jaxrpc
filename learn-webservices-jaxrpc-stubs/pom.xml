@@ -20,7 +20,7 @@
 	<dependencies>
 		<dependency>
 			<groupId>io.github.learnjaxrpc</groupId>
-			<artifactId>jakarta-xml-rpc-api</artifactId>
+			<artifactId>learn-webservices-jaxrpc-legacy-xml-rpc-api</artifactId>
 			<version>${project.version}</version>
 			<classifier>jakartaee</classifier>
 		</dependency>
@@ -34,7 +34,7 @@
 		</dependency>
 		<dependency>
 			<groupId>io.github.learnjaxrpc</groupId>
-			<artifactId>axis-jakarta</artifactId>
+			<artifactId>learn-webservices-jaxrpc-legacy-axis</artifactId>
 			<version>${project.version}</version>
 			<classifier>jakartaee</classifier>
 		</dependency>

@@ -32,9 +32,8 @@
 		<module>learn-webservices-jaxrpc-server</module>
 		<module>learn-webservices-jaxrpc-client</module>
 
-		<!-- Modules used for Jakarta EE 9 support -->
-		<module>jakarta-support/axis-jakarta</module>
-		<module>jakarta-support/jakarta-xml-rpc-api</module>
+		<!-- Modules used for Jakarta legacy support -->
+		<module>learn-webservices-jaxrpc-legacy-support</module>
 	</modules>
 
 	<repositories>

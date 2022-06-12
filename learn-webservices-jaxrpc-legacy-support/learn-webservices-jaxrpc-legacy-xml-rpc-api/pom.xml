@@ -4,29 +4,24 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<artifactId>axis-jakarta</artifactId>
+	<artifactId>learn-webservices-jaxrpc-legacy-xml-rpc-api</artifactId>
 	<packaging>jar</packaging>
 
-	<name>axis-jakarta</name>
-	<description>Axis Jakarta Support - axis-jakarta</description>
+	<name>learn-webservices-jaxrpc-legacy-xml-rpc-api</name>
+	<description>Learn how to integrate with JAX-RPC Based Web Services - XML RPC API</description>
 
 	<parent>
 		<groupId>io.github.learnjaxrpc</groupId>
-		<artifactId>learn-webservices-jaxrpc</artifactId>
+		<artifactId>learn-webservices-jaxrpc-legacy-support</artifactId>
 		<version>0.0.2-SNAPSHOT</version>
-		<relativePath>../../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
-
-	<properties>
-		<eclipse.transformer.version>0.2.0</eclipse.transformer.version>
-	</properties>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.apache.axis</groupId>
-			<artifactId>axis</artifactId>
-			<version>${axis.version}</version>
-			<!-- Use classified version instead -->
+			<groupId>javax.xml.rpc</groupId>
+			<artifactId>javax.xml.rpc-api</artifactId>
+			<version>${rpc-api.version}</version>
 			<scope>provided</scope>
 		</dependency>
 	</dependencies>
@@ -49,7 +44,7 @@
 								<unzip dest="${project.build.directory}/classes">
 									<fileset dir="${user.home}/.m2/repository">
 										<include
-											name="org/apache/axis/axis/${axis.version}/axis-${axis.version}.jar" />
+											name="javax/xml/rpc/javax.xml.rpc-api/${rpc-api.version}/javax.xml.rpc-api-${rpc-api.version}.jar" />
 									</fileset>
 								</unzip>
 							</target>

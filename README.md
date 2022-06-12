@@ -60,11 +60,12 @@ Client Module
 The client and stubs module is really what you need for integration. The client module shows how to configure a client
 stub to invoke the service on an arbitrary URL with credentials versus what the you see in the WSDL file.
 
-Jakarta EE 9 Support
---------------------
+Legacy Jakarta Support
+----------------------
 With the release of Jakarta EE 9, Axis, as is, no longer works on the modern app servers. However, the
-Eclipse Transformer can breathe new life into old frameworks. The `axis-jakarta` and `jakarta-xml-rpc-api`
-projects produce transformed JAR files that work against the new Jakarta namespace.
+Eclipse Transformer can breathe new life into old frameworks. The `learn-webservices-jaxrpc-legacy-axis`
+and `learn-webservices-jaxrpc-legacy-xml-rpc-api` projects produce transformed JAR files that work against
+the new Jakarta namespace.
 
 Building and Running the Application
 ------------------------------------
@@ -73,11 +74,11 @@ server and client.
 
 To run the server, run the following command from the top level directory of the project:
 
-> java -jar learn-webservices-jaxrpc-server/target/learn-webservices-jaxrpc-server-0.0.1-SNAPSHOT.war
+> java -jar learn-webservices-jaxrpc-server/target/learn-webservices-jaxrpc-server-0.0.2-SNAPSHOT.war
 
 From another command line, you can run the client with 
 
-> java -jar learn-webservices-jaxrpc-client/target/learn-webservices-jaxrpc-client-0.0.1-SNAPSHOT.jar
+> java -jar learn-webservices-jaxrpc-client/target/learn-webservices-jaxrpc-client-0.0.2-SNAPSHOT.jar
 
 You should see the following output:
 > =====================
