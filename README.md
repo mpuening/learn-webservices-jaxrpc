@@ -101,3 +101,9 @@ The `learn-webservices-jaxrpc-server` project contains a patch to the following 
 http://svn.apache.org/viewvc/axis/axis1/java/tags/1.4/src/org/apache/axis/utils/bytecode/ParamNameExtractor.java?revision=1225645&view=markup
 
 This is done to work around a Java 11 compatibility issue.
+
+The `learn-webservices-jaxrpc-legacy-axis` project contains the deprecated `HttpUtils` code
+that is no longer part of Jakarta EE 10. The code came from here:
+
+https://raw.githubusercontent.com/javaee/servlet-spec/master/src/main/java/javax/servlet/http/HttpUtils.java
+
