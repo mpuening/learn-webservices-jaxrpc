@@ -14,15 +14,14 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.5</version>
+		<version>2.7.16</version>
 		<relativePath />
 	</parent>
 
 	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
 
+		<!-- Apparently people are releasing updated versions (e.g. 1.4.1329) that address CVEs. I did not research them. -->
 		<axis.version>1.4</axis.version>
 	</properties>
 
