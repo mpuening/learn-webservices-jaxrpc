@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Register the Axis Servlet. The default settings will read the
- * server-config.wsdd file in src/main/webapp/WEB-INF
+ * server-config.wsdd file in src/main/resources
  */
 @Configuration
 public class WebServiceServerConfig {

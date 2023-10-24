@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * This the SOAP Request and Response logger. It is referenced in
- * in the src/main/webapp/WEB-INF/server-config.wsdd file
+ * in the src/main/resources/server-config.wsdd file
  */
 public class SOAPLogHandler extends BasicHandler {
 
