@@ -1,10 +1,12 @@
 ---
 spring:
-  profiles:    default: local
+  profiles:
+    default: local
 
 logging:
   level:
     io.github.learnjaxrpc.config: DEBUG
+    org.apache.axis.configuration: OFF
 
 ---
 spring:

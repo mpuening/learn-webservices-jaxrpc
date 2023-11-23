@@ -74,7 +74,7 @@ server and client.
 
 To run the server, run the following command from the top level directory of the project:
 
-> java -jar learn-webservices-jaxrpc-server/target/learn-webservices-jaxrpc-server-0.0.2-SNAPSHOT.war
+> java -jar learn-webservices-jaxrpc-server/target/learn-webservices-jaxrpc-server-0.0.2-SNAPSHOT.jar
 
 From another command line, you can run the client with 
 
