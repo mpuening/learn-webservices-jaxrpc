@@ -20,7 +20,7 @@
 	</parent>
 
 	<properties>
-		<java.version>17</java.version>
+		<java.version>21</java.version>
 
 		<!-- Apparently people are releasing updated versions (e.g. 1.4.1329) that address CVEs. I did not research them. -->
 		<axis.version>1.4</axis.version>
