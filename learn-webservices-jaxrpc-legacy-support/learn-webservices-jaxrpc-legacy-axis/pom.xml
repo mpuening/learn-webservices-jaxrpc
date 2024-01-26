@@ -36,41 +36,71 @@
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
+				<artifactId>maven-dependency-plugin</artifactId>
 				<executions>
 					<execution>
-						<id>unzip-artifacts</id>
-						<phase>compile</phase>
+						<id>unpack</id>
+						<phase>process-classes</phase>
 						<goals>
-							<goal>run</goal>
+							<goal>unpack</goal>
 						</goals>
 						<configuration>
-							<target>
-								<mkdir dir="${project.build.directory}/classes" />
-								<unzip dest="${project.build.directory}/classes">
-									<fileset dir="${user.home}/.m2/repository">
-										<include
-											name="org/apache/axis/axis/${axis.version}/axis-${axis.version}.jar" />
-									</fileset>
-								</unzip>
-							</target>
+							<artifactItems>
+								<artifactItem>
+									<groupId>org.apache.axis</groupId>
+									<artifactId>axis</artifactId>
+									<outputDirectory>${project.build.outputDirectory}</outputDirectory>
+									<excludes>META-INF/jandex.idx,META-INF/maven/**</excludes>
+								</artifactItem>
+							</artifactItems>
 						</configuration>
 					</execution>
 				</executions>
 			</plugin>
 			<plugin>
 				<groupId>org.eclipse.transformer</groupId>
-				<artifactId>org.eclipse.transformer.maven</artifactId>
+				<artifactId>transformer-maven-plugin</artifactId>
 				<version>${eclipse.transformer.version}</version>
 				<configuration>
-					<classifier>jakartaee</classifier>
+					<rules>
+						<jakartaDefaults>true</jakartaDefaults>
+					</rules>
 				</configuration>
 				<executions>
 					<execution>
+						<id>default-transform</id>
 						<goals>
-							<goal>run</goal>
+							<goal>transform</goal>
 						</goals>
-						<phase>package</phase>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>default-jar</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+							</archive>
+						</configuration>
+					</execution>
+					<execution>
+						<id>classifier-jar</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<archive>
+								<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
+							</archive>
+							<classifier>jakartaee</classifier>
+						</configuration>
 					</execution>
 				</executions>
 			</plugin>
